@@ -1,0 +1,11 @@
+[
+  {
+    "model": "moviesapp.category",
+    "pk": 1,
+    "fields": {
+      "name": "\u0424\u0438\u043b\u044c\u043c\u044b",
+      "description": "\u0432\u0441\u0435 \u0444\u0438\u043b\u044c\u043c\u044b \u043c\u0438\u0440\u0430",
+      "url": "action_film"
+    }
+  }
+]
