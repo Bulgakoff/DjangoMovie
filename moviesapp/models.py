@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from django.shortcuts import render, HttpResponseRedirect, reverse
 
 
 # Create your models here.
@@ -68,6 +69,10 @@ class Movies(models.Model):
     url = models.SlugField(max_length=160, unique=True)
     draft = models.BooleanField('Черновик', default=False)
 
+    def get_absolute_url(self):
+        context = {'slug': self.url}
+        return reverse('movieapp:details_movies', kwargs=context)
+
     def __str__(self):
         return self.title
 
@@ -122,8 +127,8 @@ class Reviews(models.Model):
     email = models.EmailField()
     name = models.CharField('Имя', max_length=100)
     text = models.TextField('Сообщегние отзыва', max_length=5000)
-    parent = models.ForeignKey('self', verbose_name='РОдитель', on_delete=models.SET_NULL, null=True )
-    movie= models.ForeignKey(Movies, verbose_name='Фильм', on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', verbose_name='РОдитель', on_delete=models.SET_NULL, null=True)
+    movie = models.ForeignKey(Movies, verbose_name='Фильм', on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.name}---{self.movie}'

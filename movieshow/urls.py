@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('moviesapp.urls')),
+    path('', include('moviesapp.urls', namespace='movie_app')),
 ]
 
 if settings.DEBUG:
