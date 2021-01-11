@@ -1,6 +1,5 @@
-{% load static %}
-
 <!DOCTYPE html>
+{% load static %}
 <html lang="ru">
 <head>
     <!-- //Meta tag Keywords -->
@@ -51,9 +50,9 @@
                             <a href="#">Категории <span class="fa fa-angle-down" aria-hidden="true"></span></a>
                             <input type="checkbox" id="drop-2">
                             <ul>
-                                <li><a href="moviesingle.html">Фильмы</a></li>
-                                <li><a href="moviesingle.html">Сериалы</a></li>
-                                <li><a href="moviesingle.html">Мультфильмы</a></li>
+                                <li><a href="movie_detail.html">Фильмы</a></li>
+                                <li><a href="movie_detail.html">Сериалы</a></li>
+                                <li><a href="movie_detail.html">Мультфильмы</a></li>
                             </ul>
                         </li>
                         <li><a href="contact.html"
@@ -220,7 +219,7 @@
                             </div>
                             <div class="img-deal1 col-md-4">
                                 <h3 class="editContent">Рэмбо: Последняя кровь</h3>
-                                <a href="moviesingle.html" class="editContent"></a>
+                                <a href="movie_detail.html" class="editContent"></a>
                             </div>
 
                         </div>
@@ -230,7 +229,7 @@
                             </div>
                             <div class="img-deal1 col-md-8">
                                 <h3 class="editContent">Холодное сердце 2</h3>
-                                <a href="moviesingle.html" class="editContent"></a>
+                                <a href="movie_detail.html" class="editContent"></a>
                             </div>
 
                         </div>
@@ -240,7 +239,7 @@
                             </div>
                             <div class="img-deal1 col-md-8">
                                 <h3 class="editContent">К звездам</h3>
-                                <a href="moviesingle.html" class="editContent"></a>
+                                <a href="movie_detail.html" class="editContent"></a>
                             </div>
 
                         </div>
@@ -250,7 +249,7 @@
                             </div>
                             <div class="img-deal1 col-md-8">
                                 <h3 class="editContent">Терминатор: Темные судьбы</h3>
-                                <a href="moviesingle.html" class="editContent"></a>
+                                <a href="movie_detail.html" class="editContent"></a>
                             </div>
 
                         </div>
@@ -260,7 +259,7 @@
                             </div>
                             <div class="img-deal1 col-md-8">
                                 <h3 class="editContent">Джокер</h3>
-                                <a href="moviesingle.html" class="editContent"></a>
+                                <a href="movie_detail.html" class="editContent"></a>
                             </div>
 
                         </div>
@@ -272,7 +271,7 @@
                 <!-- product right -->
                 <div class="left-ads-display col-lg-9">
                     <div class="row">
-                        {% for movie in object_list %}
+                        {% for movie in movies_list %}
                             <div class="col-md-4 product-men">
                                 <div class="product-shoe-info editContent text-center mt-lg-4">
                                     <div class="men-thumb-item">
@@ -280,24 +279,23 @@
                                     </div>
                                     <div class="item-info-product">
                                         <h4 class="">
-                                            <a href="{{ movie.get_absolute_url }}" class="editContent">
-                                                {{ movie.title }}
-                                            </a>
-
+                                            <a href="movie_detail.html" class="editContent">{{ movie.title }}</a>
                                         </h4>
 
                                         <div class="product_price">
                                             <div class="grid-price">
-                                                <span class="money editContent">{{ movie.tagline }}</span>
+                                                <span class="money editContent">«The Game Begins»</span>
                                             </div>
                                         </div>
                                         <ul class="stars">
                                             <li><a href="#"><span class="fa fa-star" aria-hidden="true"></span></a></li>
                                             <li><a href="#"><span class="fa fa-star" aria-hidden="true"></span></a></li>
                                             <li><a href="#"><span class="fa fa-star-half-o"
-                                                                  aria-hidden="true"></span></a></li>
+                                                                  aria-hidden="true"></span></a>
+                                            </li>
                                             <li><a href="#"><span class="fa fa-star-half-o"
-                                                                  aria-hidden="true"></span></a></li>
+                                                                  aria-hidden="true"></span></a>
+                                            </li>
                                             <li><a href="#"><span class="fa fa-star-o" aria-hidden="true"></span></a>
                                             </li>
                                         </ul>
@@ -305,206 +303,6 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        {#                            <div class="col-md-4 product-men">#}
-                        {#                                <div class="product-shoe-info editContent text-center mt-lg-4" >#}
-                        {#                                    <div class="men-thumb-item">#}
-                        {#                                        <img src="bundles/images/s2.jpg" class="img-fluid" alt="" >#}
-                        {#                                    </div>#}
-                        {#                                    <div class="item-info-product">#}
-                        {#                                        <h4>#}
-                        {#                                            <a href="moviesingle.html" class="editContent" >Холодное сердце 2</a>#}
-                        {#                                        </h4>#}
-                        {##}
-                        {#                                        <div class="product_price">#}
-                        {#                                            <div class="grid-price">#}
-                        {#                                                <span class="money editContent" >Слогана нет</span>#}
-                        {#                                            </div>#}
-                        {#                                        </div>#}
-                        {#                                        <ul class="stars">#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                        </ul>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                            <div class="col-md-4 product-men">#}
-                        {#                                <div class="product-shoe-info editContent text-center mt-lg-4" >#}
-                        {#                                    <div class="men-thumb-item">#}
-                        {#                                        <img src="bundles/images/s3.jpg" class="img-fluid" alt="" >#}
-                        {#                                    </div>#}
-                        {#                                    <div class="item-info-product">#}
-                        {#                                        <h4>#}
-                        {#                                            <a href="moviesingle.html" class="editContent" >Джокер</a>#}
-                        {#                                        </h4>#}
-                        {##}
-                        {#                                        <div class="product_price">#}
-                        {#                                            <div class="grid-price">#}
-                        {#                                                <span class="money editContent" >«Сделай счастливое лицо»</span>#}
-                        {#                                            </div>#}
-                        {#                                        </div>#}
-                        {#                                        <ul class="stars">#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                        </ul>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                            <div class="col-md-4 product-men">#}
-                        {#                                <div class="product-shoe-info editContent text-center mt-lg-4" >#}
-                        {#                                    <div class="men-thumb-item">#}
-                        {#                                        <img src="bundles/images/s4.jpg" class="img-fluid" alt="" >#}
-                        {#                                    </div>#}
-                        {#                                    <div class="item-info-product">#}
-                        {#                                        <h4>#}
-                        {#                                            <a href="moviesingle.html">РЭМБО: ПОСЛЕДНЯЯ КРОВЬ</a>#}
-                        {#                                        </h4>#}
-                        {##}
-                        {#                                        <div class="product_price">#}
-                        {#                                            <div class="grid-price">#}
-                        {#                                                <span class="money editContent" >«Настоящий герой бьётся до конца»</span>#}
-                        {#                                            </div>#}
-                        {#                                        </div>#}
-                        {#                                        <ul class="stars">#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                        </ul>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                            <div class="col-md-4 product-men">#}
-                        {#                                <div class="product-shoe-info editContent text-center mt-lg-4" >#}
-                        {#                                    <div class="men-thumb-item">#}
-                        {#                                        <img src="bundles/images/s5.jpg" class="img-fluid" alt="" >#}
-                        {#                                    </div>#}
-                        {#                                    <div class="item-info-product">#}
-                        {#                                        <h4>#}
-                        {#                                            <a href="moviesingle.html" class="editContent" >ТЕРМИНАТОР: ТЕМНЫЕ СУДЬБЫ</a>#}
-                        {#                                        </h4>#}
-                        {##}
-                        {#                                        <div class="product_price">#}
-                        {#                                            <div class="grid-price">#}
-                        {#                                                <span class="money editContent" >«Welcome to the Day after Judgment Day»</span>#}
-                        {#                                            </div>#}
-                        {#                                        </div>#}
-                        {#                                        <ul class="stars">#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                        </ul>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                            <div class="col-md-4 product-men">#}
-                        {#                                <div class="product-shoe-info editContent text-center mt-lg-4" >#}
-                        {#                                    <div class="men-thumb-item">#}
-                        {#                                        <img src="bundles/images/s6.jpg" class="img-fluid" alt="" >#}
-                        {#                                    </div>#}
-                        {#                                    <div class="item-info-product">#}
-                        {#                                        <h4>#}
-                        {#                                            <a href="moviesingle.html" class="editContent" >Angry Birds 2 в кино</a>#}
-                        {#                                        </h4>#}
-                        {##}
-                        {#                                        <div class="product_price">#}
-                        {#                                            <div class="grid-price">#}
-                        {#                                                <span class="money editContent" >«Заклятые друзья?»</span>#}
-                        {#                                            </div>#}
-                        {#                                        </div>#}
-                        {#                                        <ul class="stars">#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                        </ul>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                            <div class="col-md-4 product-men">#}
-                        {#                                <div class="product-shoe-info editContent text-center mt-lg-4" >#}
-                        {#                                    <div class="men-thumb-item">#}
-                        {#                                        <img src="bundles/images/s7.jpg" class="img-fluid" alt="" >#}
-                        {#                                    </div>#}
-                        {#                                    <div class="item-info-product">#}
-                        {#                                        <h4>#}
-                        {#                                            <a href="moviesingle.html" class="editContent" >История игрушек 4</a>#}
-                        {#                                        </h4>#}
-                        {##}
-                        {#                                        <div class="product_price">#}
-                        {#                                            <div class="grid-price">#}
-                        {#                                                <span class="money editContent" >«Собирайтесь в дорогу»</span>#}
-                        {#                                            </div>#}
-                        {#                                        </div>#}
-                        {#                                        <ul class="stars">#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                        </ul>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                            <div class="col-md-4 product-men">#}
-                        {#                                <div class="product-shoe-info editContent text-center mt-lg-4" >#}
-                        {#                                    <div class="men-thumb-item">#}
-                        {#                                        <img src="bundles/images/s8.jpg" class="img-fluid" alt="" >#}
-                        {#                                    </div>#}
-                        {#                                    <div class="item-info-product">#}
-                        {#                                        <h4>#}
-                        {#                                            <a href="moviesingle.html" class="editContent" >Клаус</a>#}
-                        {#                                        </h4>#}
-                        {##}
-                        {#                                        <div class="product_price">#}
-                        {#                                            <div class="grid-price ">#}
-                        {#                                                <span class="money ">«Discover the friendship that launched a legend»</span>#}
-                        {#                                            </div>#}
-                        {#                                        </div>#}
-                        {#                                        <ul class="stars">#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                        </ul>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                            <div class="col-md-4 product-men">#}
-                        {#                                <div class="product-shoe-info editContent text-center mt-lg-4" >#}
-                        {#                                    <div class="men-thumb-item">#}
-                        {#                                        <img src="bundles/images/s9.jpg" class="img-fluid" alt="" >#}
-                        {#                                    </div>#}
-                        {#                                    <div class="item-info-product">#}
-                        {#                                        <h4>#}
-                        {#                                            <a href="moviesingle.html" class="editContent" >Король Лев</a>#}
-                        {#                                        </h4>#}
-                        {##}
-                        {#                                        <div class="product_price">#}
-                        {#                                            <div class="grid-price ">#}
-                        {#                                                <span class="money ">«The King Has Returned»</span>#}
-                        {#                                            </div>#}
-                        {#                                        </div>#}
-                        {#                                        <ul class="stars">#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                            <li><a href="#"><span class="fa fa-star-o" aria-hidden="true" ></span></a></li>#}
-                        {#                                        </ul>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
                     </div>
                     <!--<div class="grid-img-right mt-4 text-right bg bg1" >
                         <span class="money editContent" >Flat 50% Off</span>
