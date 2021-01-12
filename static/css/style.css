@@ -403,6 +403,11 @@ li > a:only-child:after {
     position: relative;
     min-height: 20em;
 }
+.img-movie-shot {
+    max-width: 350px;
+    height: auto;
+
+}
 .bg1 {
     background-color: rgba(0, 0, 0, 0);
     margin-top: 0;
