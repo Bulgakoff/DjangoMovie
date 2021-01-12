@@ -6,7 +6,11 @@
             <div class="container-fluid py-md-3">
         {% endblock %}
         <div class="row">
+            {% block sidebar %}
+                <div class="side-bar col-lg-3">
+            {% endblock %}
             {% include 'includ/sidebar.html' %}
+            </div>
             {% block movie %}
 
             {% endblock %}
