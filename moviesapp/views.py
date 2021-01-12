@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect,reverse
 from django.views.generic.base import View
 from django.views.generic import ListView, DetailView
 from moviesapp.forms import ReviewsForm
@@ -37,14 +37,19 @@ class AddReviews(View):
     """Отправка отзывов"""
 
     def post(self, request, pk):
-        # film = Movies.objects.get(id=pk)
-        # context = {'film': film}
+        # form = ReviewsForm(request.POST)
+        # if form.is_valid():
+        #     form = form.save(commit=False)
+        #     form.movie_id = pk
+        #     form.save()
+        #
+        # return redirect('/')
 
         form = ReviewsForm(request.POST)
+        movie = Movies.objects.get(id=pk)
         if form.is_valid():
             form = form.save(commit=False)
-            form.movie_id = pk
+            form.movie = movie
             form.save()
 
-        return redirect('/')
-        # return render(request, 'moviesapp/movie_detail.html')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
