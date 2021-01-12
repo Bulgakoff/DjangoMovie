@@ -69,6 +69,9 @@ class Movies(models.Model):
     url = models.SlugField(max_length=160, unique=True)
     draft = models.BooleanField('Черновик', default=False)
 
+    def get_review(self):
+        return self.reviews_set.filter(parent__isnull=True)
+
     def get_absolute_url(self):
         context = {'slug': self.url}
         return reverse('movieapp:details_movies', kwargs=context)

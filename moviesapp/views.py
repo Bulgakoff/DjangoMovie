@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect,reverse
+from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.views.generic.base import View
 from django.views.generic import ListView, DetailView
 from moviesapp.forms import ReviewsForm
@@ -49,6 +49,8 @@ class AddReviews(View):
         movie = Movies.objects.get(id=pk)
         if form.is_valid():
             form = form.save(commit=False)
+            if request.POST.get("parent", None):
+                form.parent_id = int(request.POST.get("parent"))
             form.movie = movie
             form.save()
 
