@@ -404,7 +404,7 @@ li > a:only-child:after {
     min-height: 20em;
 }
 .img-movie-shot {
-    max-width: 350px;
+    max-width: 250px;
     height: auto;
 
 }
