@@ -6,7 +6,6 @@ from django.utils.safestring import mark_safe
 from moviesapp.models import Category, Actors, Genre, Movies, MovieShorts, RatingStar, Rating, Reviews
 
 
-
 # from post.models import Post
 
 class MoviesAdminForm(forms.ModelForm):
@@ -52,6 +51,7 @@ class MoviesAdmin(admin.ModelAdmin):
     save_on_top = True
     save_as = True
     form = MoviesAdminForm
+    actions = ['publish','unpublish']
     list_editable = ('draft',)
     # fields = (('actors','directors','genres',),)
     fieldsets = (
@@ -83,6 +83,31 @@ class MoviesAdmin(admin.ModelAdmin):
         return mark_safe(f'<img src={obj_model_actor_poster.poster.url} width="100" height="100">')
 
     get_image.short_description = "Постер"
+
+    def unpublish(self, request, queryset):
+        """Снять с публикации"""
+        row_update = queryset.update(draft=True)
+        if row_update == 1:
+            message_bit = '1 запись была обновлена'
+        else:
+            message_bit = f'{row_update} записей были обновлены'
+        self.message_user(request, f'{message_bit}')
+
+    def publish(self, request, queryset):
+        """Опубликовать"""
+        row_update = queryset.update(draft=False)
+        if row_update == 1:
+            message_bit = '1 запись была обновлена'
+        else:
+            message_bit = f'{row_update} записей были обновлены'
+        self.message_user(request, f'{message_bit}')
+
+
+    publish.short_description='Опубликовать'
+    publish.allowed_permissions=('change',)
+
+    unpublish.short_description='Снять с публикации'
+    unpublish.allowed_permissions=('change',)
 
 
 @admin.register(Reviews)
