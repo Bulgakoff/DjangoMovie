@@ -1,7 +1,20 @@
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django import forms
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
 from moviesapp.models import Category, Actors, Genre, Movies, MovieShorts, RatingStar, Rating, Reviews
+
+
+
+# from post.models import Post
+
+class MoviesAdminForm(forms.ModelForm):
+    description = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = Movies
+        fields = '__all__'
 
 
 @admin.register(Category)
@@ -15,12 +28,12 @@ class MoviesShortInLine(admin.TabularInline):
     model = MovieShorts
     extra = 1
 
-    readonly_fields = ('get_image', )
+    readonly_fields = ('get_image',)
+
     def get_image(self, obj_model_mshort):
         return mark_safe(f'<img src={obj_model_mshort.image.url} width="50" height="60">')
 
     get_image.short_description = "Изобр"
-
 
 
 class ReviewInLine(admin.TabularInline):
@@ -35,9 +48,10 @@ class MoviesAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'url', 'description', 'draft')
     list_filter = ("category", "year",)
     search_fields = ('title', 'category__name')
-    inlines = [MoviesShortInLine,ReviewInLine, ]
+    inlines = [MoviesShortInLine, ReviewInLine, ]
     save_on_top = True
     save_as = True
+    form = MoviesAdminForm
     list_editable = ('draft',)
     # fields = (('actors','directors','genres',),)
     fieldsets = (
@@ -46,14 +60,14 @@ class MoviesAdmin(admin.ModelAdmin):
         }),
         ("Description", {
             "classes": ("collapse",),
-            "fields": (("description", "poster"),),
+            "fields": ("description", ("poster", "get_image")),
         }),
         (None, {
             "fields": (("year", "country", "word_premiere",),),
         }),
         ("Actors", {
             "classes": ("collapse",),
-            "fields": (("directors", "actors", "genres", "category",),),
+            "fields": (("directors", "actors", ("genres", "category"))),
         }),
         (None, {
             "fields": (("budget", "fees_in_usa", "fees_in_world",),),
@@ -63,6 +77,12 @@ class MoviesAdmin(admin.ModelAdmin):
         }),
 
     )
+    readonly_fields = ('get_image',)
+
+    def get_image(self, obj_model_actor_poster):
+        return mark_safe(f'<img src={obj_model_actor_poster.poster.url} width="100" height="100">')
+
+    get_image.short_description = "Постер"
 
 
 @admin.register(Reviews)
