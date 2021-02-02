@@ -8,4 +8,5 @@ urlpatterns = [
     path('<slug:slug>/', movieapp.MovieDitailsView.as_view(), name='movie_detail'),
     path('review/<int:pk>/', movieapp.AddReviews.as_view(), name='add_reviews_movie_detail'),
 
+    path('actor/<str:slug>/', movieapp.ActorViews.as_view(), name='actor_detail'),
 ]

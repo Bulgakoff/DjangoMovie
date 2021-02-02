@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.views.generic.base import View
 from django.views.generic import ListView, DetailView
 from moviesapp.forms import ReviewsForm
-from moviesapp.models import Movies, Category
+from moviesapp.models import Movies, Category, Actors
 
 
 # class MoviesViews(View):
@@ -61,3 +61,10 @@ class AddReviews(View):
             form.save()
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+class ActorViews(DetailView):
+    """вывод инфы об актере"""
+    model = Actors
+    template_name = 'moviesapp/actor.html'
+    slug_field = 'name' # поле по которому будем искать  актеров
