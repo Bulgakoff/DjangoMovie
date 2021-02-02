@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.views.generic.base import View
 from django.views.generic import ListView, DetailView
 from moviesapp.forms import ReviewsForm
-from moviesapp.models import Movies
+from moviesapp.models import Movies, Category
 
 
 # class MoviesViews(View):
@@ -11,6 +11,11 @@ class MoviesViews(ListView):
     model = Movies
     gueryset = Movies.objects.filter(draft=False)
     template_name = 'moviesapp/movie_list.html'
+
+    # def get_context_data(self, *args, **kwargs):
+    #     context = super(MoviesViews, self).get_context_data(*args, **kwargs)
+    #     context.update({'categories': Category.objects.all()})
+    #     return context
 
     # def get(self, request):
     #     print('asdadadsads')
@@ -25,6 +30,7 @@ class MovieDitailsView(DetailView):
     model = Movies
     template_name = 'moviesapp/movie_detail.html'
     slug_field = 'url'
+
 
     # def get(self, request, slug):
     #     movie = Movies.objects.get(url=slug)
