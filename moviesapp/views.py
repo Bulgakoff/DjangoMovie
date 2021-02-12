@@ -2,11 +2,19 @@ from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.views.generic.base import View
 from django.views.generic import ListView, DetailView
 from moviesapp.forms import ReviewsForm
-from moviesapp.models import Movies, Category, Actors
+from moviesapp.models import Movies, Category, Actors, Genre
 
+
+class GenreYears:
+    """Вывод жанров и годов выхода фильмов"""
+    def get_genres(self):
+        return Genre.objects.all()
+
+    def get_years(self):
+        return Movies.objects.filter(draft=False).values('year')
 
 # class MoviesViews(View):
-class MoviesViews(ListView):
+class MoviesViews(GenreYears,ListView):
     """Список фильмов"""
     model = Movies
     gueryset = Movies.objects.filter(draft=False)
@@ -25,7 +33,7 @@ class MoviesViews(ListView):
 
 
 # class MovieDitailsView(View):
-class MovieDitailsView(DetailView):
+class MovieDitailsView(GenreYears,DetailView):
     """Детальное описание фильма"""
     model = Movies
     template_name = 'moviesapp/movie_detail.html'
@@ -63,8 +71,14 @@ class AddReviews(View):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-class ActorViews(DetailView):
+class ActorViews(GenreYears,DetailView):
     """вывод инфы об актере"""
     model = Actors
     template_name = 'moviesapp/actor.html'
     slug_field = 'name' # поле по которому будем искать  актеров
+
+class FilterMoviesView(GenreYears,ListView):
+    """Класс фильтрующий фильмы"""
+    def get_queryset(self):
+        queryset = Movies.objects.filter(year__in=self.request.GET.getlist('year'))
+        return queryset

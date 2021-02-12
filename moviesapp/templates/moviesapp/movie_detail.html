@@ -27,8 +27,8 @@
                     <li style="list-style: none">
                                     <span><b>Режиссер:</b>
                                         {% for director in movies.directors.all %}
-{#                                            <a href="{% url 'movie_app:actor_detail' director.name %}">#}
-                                            <a href="{{ director.get_absolute_url }}">
+                                            <a href="{% url 'movie_app:actor_detail' director.name %}">
+{#                                            <a href="{{ director.get_absolute_url }}">#}
                                                 {{ director.name }}
                                             </a>
                                         {% endfor %}
